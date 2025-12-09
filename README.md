@@ -105,17 +105,7 @@ FUTURE ENHANCEMENTS
 • Multi-hall seating system
 • QR code based seat identification
 
-CONCLUSION
 
-The Exam Seating Arrangement System is successfully developed using C language. It automates the exam seating process efficiently and can be easily expanded for real institutional use with GUI and database integration.
-
-VIVA QUESTIONS & ANSWERS
-Question	Answer
-Why structs?	To store multiple student details together
-Output location?	Terminal (GCC compiled program)
-Search method?	Linear search
-Sorting technique?	Ascending-based comparison sorting
-Header used?	Only stdio.h
 REFERENCES
 
 • C Programming by E. Balaguruswamy
@@ -302,3 +292,7 @@ Real-time Output Display	✔
 This C program efficiently allocates exam seats and allows searching for a particular student.
  It uses structured programming with validations, sorting, and formatted output display. 
  The solution is practical, easy to operate, and applicable in real-life educational institutions.
+
+CONCLUSION
+
+The Exam Seating Arrangement System is successfully developed using C language. It automates the exam seating process efficiently and can be easily expanded for real institutional use with GUI and database integration.
