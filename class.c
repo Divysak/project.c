@@ -10,7 +10,7 @@ int main() {
     int n, rows, cols, i, j, r, c;
     int searchRoll, found = 0;
 
-    printf("\n===== ADVANCED EXAM SEATING ARRANGEMENT SYSTEM =====\n");
+    printf("\n===== EXAM SEATING ARRANGEMENT SYSTEM =====\n");
 
     // Input number of students
     printf("\nEnter number of students: ");
@@ -92,3 +92,4 @@ int main() {
     printf("\n========= END =========\n");
     return 0;
 }
+
