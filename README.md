@@ -1,1 +1,304 @@
-# project.c
+EXAM SEATING ARRANGEMENT SYSTEM
+................................
+Project Report
+..............................................................................................................................
+B.Tech Artificial Intelligence
+..............................
+Shoolini University
+..................
+Department of Artificial Intelligence
+....................................
+PROJECT REPORT ON
+
+“EXAM SEATING ARRANGEMENT SYSTEM”
+................................
+................................
+
+🎨 Submitted By:
+    Divyansh
+    Roll No: GF202573240
+    B.Tech AI
+
+📋 Submitted To:
+    Sir Anurag Rana
+
+📅 Academic Year: 2025
+
+
+**Project Guide:** Sir Anurag Rana
+**Date:** 09/12/2025
+**Place:** Shoolini University
+
+ACKNOWLEDGMENT
+
+I would like to express my sincere gratitude to Sir Anurag Rana for his constant supervision and valuable guidance during the project. I also extend thanks to my faculty and friends for their help in successful project completion.
+
+ABSTRACT
+
+This project aims to automate the seating arrangement process in examination halls using C programming. The system prevents duplication of roll numbers, sorts the student data, allocates seats in a row-wise structure, and provides a search feature to find the seat location of any student. It improves discipline, eliminates manual errors, and saves time.
+
+INTRODUCTION
+
+Manual seating arrangement in exams is time-consuming and prone to mistakes. To solve these issues, a computerized seating system is required. This project stores student details, assigns seats automatically, and helps in locating students quickly, ensuring fairness and discipline.
+
+OBJECTIVES
+Sr.No	Objective
+1	Automate exam seating arrangement
+2	Store and manage student data
+3	Prevent duplicate roll numbers
+4	Display seating arrangement row-wise
+5	Search student seat by roll number
+ALGORITHM
+
+1️⃣ Start
+2️⃣ Input number of students
+3️⃣ Input roll number and name
+4️⃣ Check and remove duplicate roll numbers
+5️⃣ Sort roll numbers in ascending order
+6️⃣ Input exam hall rows and columns
+7️⃣ Display seating arrangement
+8️⃣ Input roll number to search
+9️⃣ Display seat location
+🔟 End
+
+FLOWCHART
+
+(Insert your flowchart image here in Word)
+
+Flow sequence:
+Start → Enter Students → Validate → Sort → Arrange Seats → Search Roll → Display → End
+
+CODE EXPLANATION
+Code Section	Explanation
+struct Student	Stores roll number and name together
+Input Loop	Takes student details with duplicate checking
+Sorting Loop	Sorts students in ascending roll order
+Seating Allocation	Places students row-wise in exam hall
+Search Logic	Finds and prints seat location
+Output	Displays seating plan and result
+OUTPUT SCREENSHOTS
+
+(Paste screenshots of your program running in terminal here)
+
+Example Output:
+• Seating arrangement printed in grid format
+• Search result shows row and column
+
+ADVANTAGES
+
+✔ Prevents cheating
+✔ Quick seating management
+✔ Reduces teacher effort
+✔ Easy to locate any student
+✔ Systematic and error-free
+
+LIMITATIONS
+
+✘ Works only in console
+✘ No database support
+✘ Manual name entry required
+
+FUTURE ENHANCEMENTS
+
+• Graphical Seating Plan
+• Database connectivity
+• Multi-hall seating system
+• QR code based seat identification
+
+CONCLUSION
+
+The Exam Seating Arrangement System is successfully developed using C language. It automates the exam seating process efficiently and can be easily expanded for real institutional use with GUI and database integration.
+
+VIVA QUESTIONS & ANSWERS
+Question	Answer
+Why structs?	To store multiple student details together
+Output location?	Terminal (GCC compiled program)
+Search method?	Linear search
+Sorting technique?	Ascending-based comparison sorting
+Header used?	Only stdio.h
+REFERENCES
+
+• C Programming by E. Balaguruswamy
+• University Lab Materials
+• Online C Programming Resources
+
+
+
+Introduction to Code
+
+The project is developed using the C programming language and utilizes only the stdio.h library for input and output operations. The program takes student details such as roll number and name, performs validation, sorts the students in ascending order of roll numbers, allocates seats in an exam hall, and finally allows searching a student’s seat location using their roll number.
+
+Header File
+#include <stdio.h>
+
+
+• This library allows using functions like printf() and scanf() for console-based input and output.
+
+Structure Declaration
+struct Student {
+    int roll;
+    char name[50];
+};
+
+
+• A structure named Student is created to store two fields:
+✔ Roll number → int roll
+✔ Name → char name[50] (string)
+
+• Structure allows grouping multiple data types together.
+
+Main Function
+int main() {
+
+
+• Execution of program starts from main() function.
+
+Variable Declarations
+struct Student s[100], temp;
+int n, rows, cols, i, j, r, c;
+int searchRoll, found = 0;
+
+
+• s[100] → can store maximum 100 students
+• temp → used for swapping during sorting
+• n → total number of students
+• rows, cols → seating layout
+• Loop variables: i, j, r, c
+• searchRoll → input roll number to search
+• found → flag to check if student exists
+
+Student Input Section
+printf("Enter number of students: ");
+scanf("%d", &n);
+
+
+• Takes the number of students from user.
+
+Duplicate Roll Number Check
+for (i = 0; i < n; i++) {
+    printf("Enter Roll No: ");
+    scanf("%d", &s[i].roll);
+
+    for (j = 0; j < i; j++) {
+        if(s[i].roll == s[j].roll) {
+            printf("Duplicate Roll Number! Enter again.\n");
+            i--;
+            break;
+        }
+    }
+
+    printf("Enter Name: ");
+    scanf("%s", s[i].name);
+}
+
+
+✔ Ensures unique roll numbers
+✔ If duplicate found → prompts again
+
+📌 Prevents cheating from students sitting together intentionally
+
+Sorting Students
+for (i = 0; i < n - 1; i++) {
+    for (j = i + 1; j < n; j++) {
+        if (s[i].roll > s[j].roll) {
+            temp = s[i];
+            s[i] = s[j];
+            s[j] = temp;
+        }
+    }
+}
+
+
+✔ Sorting students in ascending order of roll number
+✔ Ensures seating is fair and organized
+
+Sorting Method: Simple Comparison Sorting
+
+Input for Seating Layout
+printf("Enter number of rows: ");
+scanf("%d", &rows);
+printf("Enter number of columns: ");
+scanf("%d", &cols);
+
+
+• Allows user to decide size of exam hall
+
+Total seats = rows × columns
+
+Seating Arrangement Output
+int index = 0;
+for (r = 0; r < rows; r++) {
+    for (c = 0; c < cols; c++) {
+        if(index < n) {
+            printf("| %3d - %-10s | ", s[index].roll, s[index].name);
+            index++;
+        } else {
+            printf("|    EMPTY     | ");
+        }
+    }
+    printf("\n");
+}
+
+
+✔ Seats are filled row-wise
+✔ When no student remains → shows "EMPTY"
+✔ Very useful visual format for faculty
+
+Seat Search Logic
+printf("Enter Roll No to find seat: ");
+scanf("%d", &searchRoll);
+
+index = 0;
+found = 0;
+for (r = 0; r < rows; r++) {
+    for (c = 0; c < cols; c++) {
+        if(index < n && s[index].roll == searchRoll) {
+            printf("Student Found!");
+            printf("Name: %s", s[index].name);
+            printf("Seat Position: Row %d, Column %d", r+1, c+1);
+            found = 1;
+            break;
+        }
+        index++;
+    }
+    if(found) break;
+}
+
+
+✔ Searches entire seating chart
+✔ Displays exact location:
+→ Row number
+→ Column number
+
+✔ Efficient for teachers during exam time
+
+If Student Not Found
+if (!found) {
+    printf("No student found with Roll No: %d", searchRoll);
+}
+
+
+✔ Prevents confusion
+✔ Gives clear message
+
+Program End
+printf("END");
+return 0;
+}
+
+
+✔ Terminates successful execution
+
+⭐ Summary of Code Behavior
+Functionality	Status
+Student Entry	✔
+Duplicate Handling	✔
+Sorting Feature	✔
+Seat Mapping	✔
+Search Option	✔
+Real-time Output Display	✔
+📌 Final Summary
+
+This C program efficiently allocates exam seats and allows searching for a particular student.
+ It uses structured programming with validations, sorting, and formatted output display. 
+ The solution is practical, easy to operate, and applicable in real-life educational institutions.
