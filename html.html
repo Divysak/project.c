@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Exam Seating Arrangement System - C Project</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <h1>Exam Seating Arrangement System</h1>
+    <h3>(C Project using only stdio.h)</h3>
+
+    <div class="menu">
+        <button onclick="showSection('home')">Home</button>
+        <button onclick="showSection('code')">View C Code</button>
+        <button onclick="showSection('how')">How to Run</button>
+    </div>
+
+    <!-- Home -->
+    <div id="home" class="section">
+        <p>This project arranges students in exam hall seating and finds seat by roll number.</p>
+        <p>Output will display in terminal when program is executed.</p>
+    </div>
+
+    <!-- Code Page -->
+    <div id="code" class="section" style="display:none;">
+        <h2>C Source Code</h2>
+<pre>
+#include &lt;stdio.h&gt;
+
+struct Student {
+    int roll;
+    char name[50];
+};
+
+int main() {
+    struct Student s[100], temp;
+    int n, rows, cols, i, j, r, c;
+    int searchRoll, found = 0;
+
+    printf("\n===== ADVANCED EXAM SEATING ARRANGEMENT SYSTEM =====\n");
+
+    printf("\nEnter number of students: ");
+    scanf("%d", &n);
+
+    for (i = 0; i < n; i++) {
+        printf("\nEnter Roll No for student %d: ", i + 1);
+        scanf("%d", &s[i].roll);
+
+        for (j = 0; j < i; j++) {
+            if (s[i].roll == s[j].roll) {
+                printf("Duplicate Roll Number! Enter again.\n");
+                i--;
+                break;
+            }
+        }
+
+        printf("Enter Name: ");
+        scanf("%s", s[i].name);
+    }
+
+    for (i = 0; i < n - 1; i++) {
+        for (j = i + 1; j < n; j++) {
+            if (s[i].roll > s[j].roll) {
+                temp = s[i];
+                s[i] = s[j];
+                s[j] = temp;
+            }
+        }
+    }
+
+    printf("\nEnter number of rows: ");
+    scanf("%d", &rows);
+    printf("Enter number of columns: ");
+    scanf("%d", &cols);
+
+    printf("\n===== Seating Arrangement =====\n");
+
+    int index = 0;
+    for (r = 0; r < rows; r++) {
+        for (c = 0; c < cols; c++) {
+            if (index < n) {
+                printf("| %3d - %-10s | ", s[index].roll, s[index].name);
+                index++;
+            } else {
+                printf("|    EMPTY     | ");
+            }
+        }
+        printf("\n");
+    }
+
+    printf("\nEnter Roll No to find seat: ");
+    scanf("%d", &searchRoll);
+
+    index = 0;
+    found = 0;
+    for (r = 0; r < rows; r++) {
+        for (c = 0; c < cols; c++) {
+            if (index < n && s[index].roll == searchRoll) {
+                printf("\n🎯 Student Found!\n");
+                printf("Name: %s\n", s[index].name);
+                printf("Seat Position: Row %d, Column %d\n", r + 1, c + 1);
+                found = 1;
+                break;
+            }
+            index++;
+        }
+        if (found) break;
+    }
+
+    if (!found) {
+        printf("\n⚠ No student found with Roll No: %d\n", searchRoll);
+    }
+
+    printf("\n========= END =========\n");
+    return 0;
+}
+</pre>
+    </div>
+
+    <!-- How to run -->
+    <div id="how" class="section" style="display:none;">
+        <h2>How to Run the Program</h2>
+<pre>
+1️⃣ Open VS Code
+2️⃣ Press Ctrl + ` to open Terminal
+3️⃣ Type:
+   gcc class.c -o class
+   ./class
+
+✔ Terminal will show seating output
+✔ Website is only presentation of code + details
+</pre>
+    </div>
+
+<script src="js.js"></script>
+</body>
+</html>

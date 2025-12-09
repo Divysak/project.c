@@ -1,0 +1,43 @@
+body {
+    background-color: #121212;
+    color: #00ffea;
+    font-family: Consolas, monospace;
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #00eaff;
+}
+
+button {
+    background-color: #00eaff;
+    color: #000;
+    border: none;
+    padding: 12px 18px;
+    margin: 8px;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #007f99;
+}
+
+pre {
+    background: #1e1e1e;
+    border: 1px solid #00eaff;
+    padding: 12px;
+    border-radius: 6px;
+    width: 80%;
+    margin: auto;
+    overflow-x: auto;
+    text-align: left;
+    color: #00ff8a;
+}
+
+.section {
+    margin-top: 20px;
+}
