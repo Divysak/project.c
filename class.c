@@ -12,11 +12,10 @@ int main() {
 
     printf("\n===== EXAM SEATING ARRANGEMENT SYSTEM =====\n");
 
-    // Input number of students
+    
     printf("\nEnter number of students: ");
     scanf("%d", &n);
 
-    // Input with duplicate Roll number check
     for (i = 0; i < n; i++) {
         printf("\nEnter Roll No for student %d: ", i + 1);
         scanf("%d", &s[i].roll);
@@ -33,7 +32,7 @@ int main() {
         scanf("%s", s[i].name);
     }
 
-    // Sorting by roll number
+
     for (i = 0; i < n - 1; i++) {
         for (j = i + 1; j < n; j++) {
             if (s[i].roll > s[j].roll) {
@@ -44,7 +43,7 @@ int main() {
         }
     }
 
-    // Get seating arrangement details
+    
     printf("\nEnter number of rows: ");
     scanf("%d", &rows);
     printf("Enter number of columns: ");
@@ -65,7 +64,7 @@ int main() {
         printf("\n");
     }
 
-    // Search Feature
+    
     printf("\nEnter Roll No to find seat: ");
     scanf("%d", &searchRoll);
 
@@ -92,4 +91,5 @@ int main() {
     printf("\n========= END =========\n");
     return 0;
 }
+
 
